@@ -19,6 +19,11 @@ WSGISocketPrefix /var/run/wsgi
     SSLEngine on
     SSLCertificateFile      {{ certificates_path }}/{{ssl_crt_primary}}
     SSLCertificateKeyFile   {{ certificates_path }}/{{ssl_key_primary}}
+  
+    <Directory "/etc/ckan/default">
+      Require all granted
+    </Directory>
+
 
 </VirtualHost>
 

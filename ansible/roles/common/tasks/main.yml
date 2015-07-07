@@ -76,7 +76,7 @@
   - restart sshd
 
 - name: Ensure ansible requirements
-  action: apt pkg="{{ item }}" state=latest
+  apt: name="{{ item }}" state=latest
   with_items:
     - python-psycopg2
     - python-virtualenv
@@ -94,6 +94,9 @@
     - gettext
     - build-essential
     - nodejs
+    - libz-dev
+    - libssl-dev
+    - postgresql-server-dev-9.3
   tags:
   - packages
   - common
