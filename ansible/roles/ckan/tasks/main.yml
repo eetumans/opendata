@@ -26,7 +26,7 @@
   - ckan
 
 - name: Install CKAN
-  pip: name="git+https://github.com/ckan/ckan.git@ckan-2.3#egg=ckan" virtualenv="{{ virtual_environment }}" state=latest
+  pip: name="git+https://github.com/ckan/ckan.git@ckan-2.4.0#egg=ckan" virtualenv="{{ virtual_environment }}" state=latest
   tags:
   - ckan
 
