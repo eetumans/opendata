@@ -1,0 +1,29 @@
+{% import 'macros/form.html' as form %}
+{% import 'macros/ytp_form.html' as ytp_form %}
+
+{% if data.collection_type and not h.is_sysadmin() %}
+    <div class="control-group control-large">
+        <label for="field-organizations" class="control-label">{{ _('Collection Type') }}</label>
+        <div class="controls">
+            <p>{{ _(data.collection_type) }}</p>
+        </div>
+    </div>
+
+    {{ form.hidden('collection_type', data.collection_type) }}
+
+{% else %}
+    {% call form.input_block("collection_type", _('Collection Type'), errors.collection_type, [], extra_html="") %}
+        <div class="radio-select-label">
+            <label class="radio ">
+                <input name="collection_type" type="radio" value="Open Data" {% if data.collection_type == 'Open Data' %}checked="checked"{% endif %} />
+                {%- trans -%}Open Data{%- endtrans -%}
+            </label>
+        </div>
+        <div class="radio-select-label">
+            <label class="radio">
+                <input name="collection_type" type="radio" value="Interoperability Tools" {% if data.collection_type == 'Interoperability Tools' %}checked="checked"{% endif %} />
+                {%- trans -%}Interoperability Tools{%- endtrans -%}
+            </label>
+        </div>
+    {% endcall %}
+{% endif %}

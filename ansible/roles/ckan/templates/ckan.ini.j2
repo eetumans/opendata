@@ -90,6 +90,11 @@ producer_type_options_url = file://{{ ckan_files_path }}/producer_types.json
 producer_type_private_options_url = file://{{ ckan_files_path }}/producer_types_private.json
 target_group_options_url = file://{{ ckan_files_path }}/target_groups.json
 
+scheming.presets = ckanext.scheming:presets.json
+                   ckanext.fluent:presets.json
+
+scheming.dataset_schemas = ckanext.ytp.schemas:dataset_schema.json
+
 ckanext.ytp.organizations.default_organization_name = yksityishenkilo
 ckanext.ytp.organizations.default_organization_title = Yksityishenkil\u00f6
 

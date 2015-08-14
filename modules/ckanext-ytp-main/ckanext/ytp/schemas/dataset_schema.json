@@ -1,0 +1,76 @@
+{
+  "scheming_version": 1,
+  "dataset_type": "dataset",
+  "about_url": "https://github.com/yhteentoimivuuspalvelut/ckanext-ytp-main/tree/master/ckanext/ytp/dataset",
+  "form_languages": ["fi", "en", "sv"],
+  "dataset_fields": [
+    {
+      "field_name": "collection_type",
+      "label": "Collection Type",
+      "form_snippet": "collection_type.html",
+      "required": true
+    },
+    {
+      "field_name": "title",
+      "label": "Title",
+      "preset": "fluent_text"
+
+
+    },
+    {
+      "field_name": "url",
+      "label": "URL",
+      "preset": "dataset_slug"
+    },
+    {
+      "field_name": "description",
+      "label": "Description",
+      "preset": "fluent_markdown"
+    },
+    {
+      "field_name": "tags",
+      "label": "Tags",
+      "preset": "tag_string_autocomplete"
+    },
+    {
+      "field_name": "license",
+      "label": "License",
+      "form_snippet": "license.html"
+    },
+    {
+      "field_name": "copyright_notice",
+      "label": "Copyright Notice",
+      "preset": "fluent_text"
+    },
+    {
+      "field_name": "organization",
+      "label": "Organization",
+      "preset": "dataset_organization"
+    },
+    {
+      "field_name": "extra_information",
+      "label": "Extra information at website"
+    },
+    {
+      "field_name": "content_type",
+      "label": "Content type"
+    },
+    {
+      "field_name": "author",
+      "label": "Author"
+    },
+    {
+      "field_name": "author_email",
+      "label": "Author Email"
+    },
+    {
+      "field_name": "owner",
+      "label": "Owner"
+    },
+    {
+      "field_name": "owner_email",
+      "label": "Owner Email"
+    }
+  ]
+
+}
