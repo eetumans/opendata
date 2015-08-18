@@ -1,4 +1,4 @@
-{% extends "package/base.html" %}
+{% ckan_extends %}
 
 {% set res = c.resource %}
 {% set visits =  h.get_visits_for_resource(res.id) %}
@@ -81,10 +81,11 @@
         </div>
       </div>
       {% block data_preview %}
-        {# Data preview is disabled due to bugs and problems with preview extensions, and because they add little value. #}
+      {{ super() }}
       {% endblock %}
     </section>
   {% endblock %}
+
   {% block resource_additional_information %}
     {% if res %}
       <section class="module">
