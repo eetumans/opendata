@@ -18,7 +18,6 @@
 {% endblock %}
 
 {% block primary_content %}
-  {% resource "ytp_request_js/request.js" %}
 
   {% set allow_process = h.check_access('member_request_process', {'member': member.id}) %}
   <section class="module">
@@ -28,12 +27,12 @@
           <tbody>
               <tr>
                   <th>{% trans %}Organization{% endtrans %}</th>
-                  <td><a href="{{ h.url('organization_read', id=member.group.name) }}">{{ member.group.title }} ({{ member.group.name }})</a></td>
+                  <td><a href="{{ h.url('organization_read', id=member.group.name) }}" target="_blank">{{ member.group.title }} ({{ member.group.name }})</a></td>
               </tr>
               <tr>
                   <th>{% trans %}User{% endtrans %}</th>
                   <td>
-                      <a href="{{ h.url_for('user_datasets', controller='user', id=member_user.name) }}">
+                      <a href="{{ h.url_for('user_datasets', controller='user', id=member_user.name) }}" target="_blank">
                         {% if member_user.fullname %}
                         {{ member_user.fullname }} ({{ member_user.name }})
                         {% else %}
@@ -51,7 +50,7 @@
                   <td>
                   {% if allow_process %}
                   <form class="dataset-form form-horizontal" method="post" action="{{ h.url_for('member_request_show', member_id=member.id) }}" data-module="basic-form">
-                      <select name="role" class="submit-on-change">
+                      <select name="role">
                       {% for option in roles %}
                           <option value="{{ option.value }}"{% if option.value == member.capacity %} selected="selected"{% endif %}>{{ option.text or option.value }}</option>
                       {% endfor %}
