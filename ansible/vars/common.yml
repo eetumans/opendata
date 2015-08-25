@@ -85,7 +85,7 @@ virtual_environment: /usr/lib/ckan/default
 
 harvest_sources: false
 
-ckan_version: "2.3"
+ckan_version: "2.4"
 
 email_domain: "localhost"
 email_domain_access: "localhost"
