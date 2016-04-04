@@ -420,6 +420,7 @@
     - supervisor_services
   tags:
   - ckan
+  ignore_errors: True
 
 - name: Ensure supervisor services are started
   supervisorctl: name={{ item }} state=started
