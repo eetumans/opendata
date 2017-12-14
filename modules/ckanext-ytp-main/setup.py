@@ -22,27 +22,27 @@ setup(
     message_extractors={
         'ckanext': [
             ('**.py', 'python', None),
-            ('ytp/*/templates/**.html', 'ckan', None),
+            ('ytp/templates/**.html', 'ckan', None),
             ('**.js', 'javascript', None)
         ]
     },
     entry_points='''
         [ckan.plugins]
-        ytp_user=ckanext.ytp.user.plugin:YtpUserPlugin
-        ytp_organizations=ckanext.ytp.organizations.plugin:YtpOrganizationsPlugin
-        ytp_organizations_display=ckanext.ytp.organizations.plugin:YtpOrganizationsDisplayPlugin
-        hri_harvester=ckanext.ytp.organizations.harvesters.hriharvester:HRIHarvester
-        ytp_theme=ckanext.ytp.theme.plugin:YtpThemePlugin
-        ytp_dataset=ckanext.ytp.dataset.plugin:YTPDatasetForm
-        ytp_spatial=ckanext.ytp.dataset.plugin:YTPSpatialHarvester
-        ytp_service=ckanext.ytp.service.plugin:YTPServiceForm
-        ytp_report=ckanext.ytp.report.plugin:YtpReportPlugin
+        ytp_user=ckanext.ytp.plugin:YtpUserPlugin
+        ytp_organizations=ckanext.ytp.plugin:YtpOrganizationsPlugin
+        ytp_organizations_display=ckanext.ytp.plugin:YtpOrganizationsDisplayPlugin
+        hri_harvester=ckanext.ytp.harvesters.hriharvester:HRIHarvester
+        ytp_theme=ckanext.ytp.plugin:YtpThemePlugin
+        ytp_dataset=ckanext.ytp.plugin:YTPDatasetForm
+        ytp_spatial=ckanext.ytp.plugin:YTPSpatialHarvester
+        ytp_service=ckanext.ytp.plugin:YTPServiceForm
+        ytp_report=ckanext.ytp.plugin:YtpReportPlugin
 
         [ckan.celery_task]
-        tasks = ckanext.ytp.common.celery_import:task_imports
+        tasks = ckanext.ytp.celery_import:task_imports
 
         [paste.paster_command]
-        ytp-facet-translations = ckanext.ytp.dataset.commands:YtpFacetTranslations
-        ytp-dataset = ckanext.ytp.dataset.commands:ytp_dataset_group
+        ytp-facet-translations = ckanext.ytp.commands:YtpFacetTranslations
+        ytp-dataset = ckanext.ytp.commands:ytp_dataset_group
     ''',
 )

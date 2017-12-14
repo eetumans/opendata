@@ -1,5 +1,0 @@
-[
-    { "name": "hri", "title": "Ulkoinen lähde: Hri.fi", "title_en": "External source: Hri.fi", "title_sv": "Extern källa: Hri.fi",
-      "description": "Tähän organisaatioon harvestoidaan tietoaineistoja Helsinki Region Infosharesta." },
-    { "name": "datagovuk", "title": "Data.Gov.UK" }
-]
