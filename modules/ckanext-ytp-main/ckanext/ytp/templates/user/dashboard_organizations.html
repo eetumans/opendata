@@ -1,0 +1,38 @@
+{% ckan_extends %}
+
+{% block breadcrumb_content %}
+  <li><a href="{{ h.url_for(controller='user', action='index') }}">{{ _('Users') }}</a></li>
+  <li><a href="{{ h.url_for(controller='user', action='read', id=c.user_dict.name) }}">{{ c.user_dict.display_name }}</a></li>
+  <li class="active"><a href="#">{{ _('Organizations') }}</a></li>
+{% endblock %}
+
+{% block page_header %}
+    <h1 class="content-heading">{% trans %}My Organizations{% endtrans %}</h1>
+{% endblock %}
+
+{% block page_primary_action %}
+  {% set orgs =  h.organizations_available() %}
+  {% if orgs | count != 0 %}
+    <div class="btn-group">
+      <a href="/data/{{ h.lang() }}/member-request/list" class="btn btn-primary">{{ _('Membership Requests') }}</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h2 class="hide-heading">{{ _('My Organizations') }}</h2>
+
+  {% set organizations = h.organizations_available('manage_group') %}
+  {% if organizations %}
+    <div class="wide">
+      {% snippet "organization/snippets/organization_list.html", organizations=organizations %}
+    </div>
+  {% else %}
+    <p class="empty">
+      {{ _('You are not a member of any organizations.') }}
+      {% if h.check_access('organization_create') %}
+        {% link_for _('Create one now?'), controller='organization', action='new' %}
+      {% endif %}
+    </p>
+  {% endif %}
+{% endblock %}

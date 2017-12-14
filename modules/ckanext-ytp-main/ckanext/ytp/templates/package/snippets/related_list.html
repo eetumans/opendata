@@ -1,0 +1,24 @@
+<section id="dataset-resources" class="resources">
+  <h3>{{ _('Related Components') }} ({{ related_items|count }})
+      {% if collection_type != 'Interoperability Tools' or h.check_access('related_create', {'dataset_id': pkg_id}) %}
+        <a class="btn btn-xs" href="{{ h.url_for(controller='related', action='new', id=pkg_id) }}">{{ _('Add Related Component') }}</a>
+      {% endif %}
+  </h3>
+  {% block related_list %}
+  {% if related_items %}
+    <ul class="resource-list">
+      {% block related_list_inner %}
+      {% for related in related_items %}
+        {% snippet 'package/snippets/related_item.html', pkg_id=pkg_id, related=related %}
+      {% endfor %}
+      {% endblock %}
+    </ul>
+  {% else %}
+    <p>
+      {% trans %}
+      <p class="empty">Do you know apps based on this dataset? Add them by logging in.
+      {% endtrans %}
+    </p>
+  {% endif %}
+  {% endblock %}
+</section>

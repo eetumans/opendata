@@ -1,0 +1,63 @@
+{% ckan_extends %}
+
+{% block primary %}
+    {% block content_action %}
+       <div class="content_action">
+           {% if h.check_access('package_update', {'id':pkg.id }) %}
+               {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn pull-right', icon='wrench' %}
+           {% endif %}
+        </div>
+       {% endblock %}
+    <h1 class="dataset-title">
+        {% block page_heading %}
+            {{ h.extra_translation(pkg, 'title') or pkg.name }}
+        {% endblock %}
+    </h1>
+    {% snippet "package/snippets/subtitle_byline.html", pkg=pkg %}
+    <div id="dataset-primary" class="row">
+    {% block primary_content %}
+      <section class="dataset-primary-content col-lg-8">
+        {% block primary_content_inner %}
+        {% block package_description %}
+            {% block package_notes %}
+                {% set notes_formatted = h.extra_translation(pkg, 'notes', markdown=True) %}
+                {% if notes_formatted %}
+                <div class="notes embedded-content">
+                    {{ notes_formatted }}
+                </div>
+              {% endif %}
+            {% endblock %}
+        {% endblock %}
+
+        {% block package_tags %}
+        {% endblock %}
+        {% block package_resources %}
+           {% snippet "package/snippets/resources_list2.html", pkg=pkg, resources=pkg.resources %}
+        {% endblock %}
+
+        {% block package_additional_info %}
+            {% snippet "package/snippets/ytp_additional_info.html", pkg_dict=pkg %}
+        {% endblock %}
+
+        {% endblock %}
+
+         </section> 
+    {% endblock %}
+
+    {% block package_info %}
+        {% snippet 'package/snippets/dataset_info.html', pkg=pkg%}
+    {% endblock %}
+
+    {% block secondary_content %}
+
+      {% block secondary_help_content %}{% endblock %}
+
+      {% block package_social %}{% endblock %}
+
+      {% block package_license %}{% endblock %}
+
+      {% block package_organization %}{% endblock %}
+
+    {% endblock %}
+</div>
+{% endblock %}

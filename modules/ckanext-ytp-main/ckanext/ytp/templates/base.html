@@ -1,0 +1,32 @@
+
+{% ckan_extends %}
+{% block body_extras %}
+    {{ super() }}
+    {# we already include bootstrap.js in ckan #}
+    {#% resource "ytp_resources/vendor/bootstrap.js" %#}
+    {% resource "ytp_resources/vendor/moment-with-langs.js" %}
+    {% resource "ytp_resources/vendor/bootstrap-datetimepicker.js" %}
+    {% resource "ytp_resources/vendor/jstree/jstree.js" %}
+    {% resource "ytp_resources/vendor/offcanvas.js" %}
+
+{% endblock %}
+{% block styles %}
+    {% include "head-styles-ckan.html" %}
+    {% include "head-scripts.html" %}
+{% endblock %}
+
+{%- block title -%}
+    {%- block subtitle %}{% endblock -%}
+    {%- if self.subtitle()|trim %} {{ g.template_title_deliminater }} {% endif -%}
+    {{ h.short_domain(request.environ.HTTP_HOST, 'avoindata.fi') }}
+{%- endblock -%}
+
+{% block meta %}
+    {{ super() }}
+    {% set lang = h.lang() %}
+    {% set base_url = h.short_domain(request.environ.HTTP_HOST, 'avoindata.fi') %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://{{ base_url }}/resources/images/logo/avoindata_fb_{{ lang }}_600x600.jpg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />      
+{% endblock %}

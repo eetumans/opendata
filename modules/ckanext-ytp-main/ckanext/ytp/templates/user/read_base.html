@@ -1,0 +1,61 @@
+{% ckan_extends %}
+
+{% set user = c.user_dict %}
+
+{# Removes the 'Manage' button from the top right #}
+{% block content_action %}
+{% endblock %}
+
+{% block secondary_content %}
+<div class="module context-info">
+  <section class="module-content">
+    {% block secondary_content_inner %}
+      <div class="image">{% if user.image_display_url %}<img src="{{ user.image_display_url }}" width="190" height="190" class="media-image" />{% endif %}</div>
+      <h1 class="heading">{{ user.display_name }}</h1>
+      {% if user['about'] %}
+        {# Translate the about field #}
+        {{ h.extra_translation(user, 'about', markdown=True) }}
+      {% else %}
+        <p class="empty">
+          {% if c.is_myself %}
+            {% trans %}You have not provided a biography.{% endtrans %}
+          {% else %}
+            {% trans %}This user has no biography.{% endtrans %}
+          {% endif %}
+        </p>
+      {% endif %}
+      <div class="info">
+        <dl>
+          {% if user.name.startswith('http://') or user.name.startswith('https://') %}
+            <dt class="full-width">{{ _('Open ID') }}</dt>
+            <dd>{{ user.name|urlize(25) }}{# Be great if this just showed the domain #}</dd>
+          {% else %}
+            <dt class="full-width">{{ _('Username') }}</dt>
+            <dd>{{ user.name }}</dd>
+          {% endif %}
+        </dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt class="full-width">{{ _('Email') }} <span class="icon-question-sign" title="{{ _('Private') }} ({{ _('This means only you can see this') }})"></span></dt>
+            <dd>{{ user.email }}</dd>
+          </dl>
+        {% endif %}
+        <dl>
+          <dt class="full-width">{{ _('Member Since') }}</dt>
+          <dd>{{ h.render_datetime(user.created) }}</dd>
+        </dl>
+        <dl>
+          <dt class="full-width">{{ _('State') }}</dt>
+          <dd>{{ user.state }}</dd>
+        </dl>
+        {% if c.is_myself %}
+          <dl>
+            <dt class="key full-width">{{ _('API Key') }} <span class="icon-question-sign" title="{{ _('Private') }} ({{ _('This means only you can see this') }})"></span></dt>
+            <dd class="value"><code>{{ user.apikey }}</code></dd>
+          </dl>
+        {% endif %}
+      </div>
+    {% endblock %}
+  </section>
+</div>
+{% endblock %}
