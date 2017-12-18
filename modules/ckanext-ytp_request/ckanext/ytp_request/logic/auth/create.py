@@ -1,4 +1,4 @@
-from ckanext.ytp.request.helper import get_user_member
+from ckanext.ytp_request.helper import get_user_member
 from ckan import authz
 import logging
 from ckan.common import _

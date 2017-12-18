@@ -1,8 +1,8 @@
 from ckan import logic, model
 from ckan.common import _
 from ckan.lib.dictization import model_dictize
-from ckanext.ytp.request.model import MemberRequest
-from ckanext.ytp.request.helper import get_organization_admins
+from ckanext.ytp_request.model import MemberRequest
+from ckanext.ytp_request.helper import get_organization_admins
 
 import logging
 import ckan.authz as authz

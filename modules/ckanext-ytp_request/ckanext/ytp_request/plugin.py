@@ -19,7 +19,7 @@ class YtpRequestPlugin(plugins.SingletonPlugin):
 
     # IActions
     def get_actions(self):
-        from ckanext.ytp.request.logic.action import get, create, update, delete
+        from ckanext.ytp_request.logic.action import get, create, update, delete
 
         return {
             "member_request_create": create.member_request_create,
@@ -35,7 +35,7 @@ class YtpRequestPlugin(plugins.SingletonPlugin):
 
     # IAuthFunctions
     def get_auth_functions(self):
-        from ckanext.ytp.request.logic.auth import get, create, update, delete
+        from ckanext.ytp_request.logic.auth import get, create, update, delete
 
         return {
             "member_request_create": create.member_request_create,
@@ -51,7 +51,7 @@ class YtpRequestPlugin(plugins.SingletonPlugin):
     # IRoutes #
     def before_map(self, m):
         """ CKAN autocomplete discards vocabulary_id from request. Create own api for this. """
-        controller = 'ckanext.ytp.request.controller:YtpRequestController'
+        controller = 'ckanext.ytp_request.controller:YtpRequestController'
         m.connect('member_request_create', '/member-request/new',
                   action='new', controller=controller)
         m.connect('member_requests_mylist', '/member-request/mylist',

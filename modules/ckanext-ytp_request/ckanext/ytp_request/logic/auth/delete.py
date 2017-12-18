@@ -1,5 +1,5 @@
 from ckan.common import c
-from ckanext.ytp.request.helper import get_user_member
+from ckanext.ytp_request.helper import get_user_member
 import logging
 log = logging.getLogger(__name__)
 

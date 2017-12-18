@@ -2,10 +2,10 @@ from ckan import model, logic
 from ckan.lib.dictization import model_dictize
 from ckan.common import _
 from pylons import config
-from ckanext.ytp.request.model import MemberRequest
+from ckanext.ytp_request.model import MemberRequest
 from ckan.lib.helpers import url_for
-from ckanext.ytp.request.mail import mail_new_membership_request
-from ckanext.ytp.request.helper import get_safe_locale
+from ckanext.ytp_request.mail import mail_new_membership_request
+from ckanext.ytp_request.helper import get_safe_locale
 import logging
 import ckan.authz as authz
 

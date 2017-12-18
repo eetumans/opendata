@@ -16,7 +16,7 @@ ckan_extensions:
   - ckanext-drupal7
   - ckanext-ytp-drupal
   - ckanext-ytp-tasks
-  - ckanext-ytp-request
+  - ckanext-ytp_request
   - ckanext-ytp-main
   - ckanext-hierarchy
   - ckanext-googleanalytics
@@ -60,7 +60,7 @@ translation_languages:
 
 translation_projects:
   - "ckanext-drupal7"
-  - "ckanext-ytp-request"
+  - "ckanext-ytp_request"
   - "ckanext-ytp-drupal"
   - "ytp-assets-common"
   - "ckanext-ytp-main"

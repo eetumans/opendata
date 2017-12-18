@@ -40,7 +40,7 @@ class InitDBCommand(CkanCommand):
         model.Session.remove()
         model.Session.configure(bind=model.meta.engine)
 
-        import ckanext.ytp.request.model as rmodel
+        import ckanext.ytp_request.model as rmodel
         self.log.info("Initializing tables")
         rmodel.init_tables()
         self.log.info("DB tables are setup")
