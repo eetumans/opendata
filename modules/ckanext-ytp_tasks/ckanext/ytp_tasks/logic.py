@@ -1,6 +1,6 @@
 from ckan.logic import check_access
 from ckan.plugins import toolkit
-from ckanext.ytp.tasks.model import YtpTaskSource, YtpTaskTables
+from ckanext.ytp_tasks.model import YtpTaskSource, YtpTaskTables
 
 
 def user_is_sysadmin(context):

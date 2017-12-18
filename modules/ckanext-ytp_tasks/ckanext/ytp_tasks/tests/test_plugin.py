@@ -3,7 +3,7 @@ import paste.fixture
 import pylons.test
 import ckan.model as model
 import ckan.tests as tests
-from ckanext.ytp.tasks.model import YtpTaskTables
+from ckanext.ytp_tasks.model import YtpTaskTables
 
 
 class TestYtpTasksPlugin(TestCase):

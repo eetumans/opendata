@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 version = '0.1'
 
-setup(name='ckanext-ytp-tasks',
+setup(name='ckanext-ytp_tasks',
       version=version,
       description="Provides tasks for CKAN",
       long_description=""" """,
@@ -13,7 +13,7 @@ setup(name='ckanext-ytp-tasks',
       url='',
       license='',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-      namespace_packages=['ckanext', 'ckanext.ytp', 'ckanext.ytp.tasks'],
+      namespace_packages=['ckanext', 'ckanext.ytp_tasks'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
@@ -21,11 +21,11 @@ setup(name='ckanext-ytp-tasks',
       ],
       entry_points="""
       [ckan.plugins]
-      ytp_tasks=ckanext.ytp.tasks.plugin:YtpTasksPlugin
+      ytp_tasks=ckanext.ytp_tasks.plugin:YtpTasksPlugin
       [ckan.celery_task]
-      tasks = ckanext.ytp.tasks.celery_import:task_imports
+      tasks = ckanext.ytp_tasks.celery_import:task_imports
       [paste.paster_command]
-      ytp-task-add = ckanext.ytp.tasks.commands:YtpTaskAdd
-      ytp-tasks-initialize-database = ckanext.ytp.tasks.commands:YtpTaskInitDatabase
-      ytp-task-execute-all = ckanext.ytp.tasks.commands:YtpTaskExecute
+      ytp-task-add = ckanext.ytp_tasks.commands:YtpTaskAdd
+      ytp_tasks-initialize-database = ckanext.ytp_tasks.commands:YtpTaskInitDatabase
+      ytp-task-execute-all = ckanext.ytp_tasks.commands:YtpTaskExecute
       """)

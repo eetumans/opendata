@@ -1,5 +1,5 @@
 from ckan import plugins
-from ckanext.ytp.tasks import logic
+from ckanext.ytp_tasks import logic
 
 
 class YtpTasksPlugin(plugins.SingletonPlugin):

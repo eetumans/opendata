@@ -15,7 +15,7 @@ ckan_aws_plugins: cloudstorage
 ckan_extensions:
   - ckanext-drupal7
   - ckanext-ytp-drupal
-  - ckanext-ytp-tasks
+  - ckanext-ytp_tasks
   - ckanext-ytp_request
   - ckanext-ytp-main
   - ckanext-hierarchy

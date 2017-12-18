@@ -7,7 +7,7 @@ from ckan import model
 from ckan.lib import celery_app
 from ckan.lib.cli import CkanCommand
 
-from ckanext.ytp.tasks.model import YtpTaskSource, YtpTaskTables
+from ckanext.ytp_tasks.model import YtpTaskSource, YtpTaskTables
 
 _config_loaded = False
 
@@ -29,7 +29,7 @@ def _load_config():
     command._load_config()
 
 
-@celery_app.celery.task(name="ckanext.ytp.tasks.execute_all")
+@celery_app.celery.task(name="ckanext.ytp_tasks.execute_all")
 def execute_all(stage=None):
     """ Execute all tasks from database """
     _load_config()

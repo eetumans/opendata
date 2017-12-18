@@ -10,7 +10,7 @@ class YtpTaskAdd(CkanCommand):
 
     usage = "task_id task frequency data"
     summary = "Add task to scheduling. Frequency can be daily, weekly or monthly. Data in json format."
-    group_name = "ytp-tasks"
+    group_name = "ytp_tasks"
 
     def __init__(self, name):
         super(YtpTaskAdd, self).__init__(name)
@@ -51,7 +51,7 @@ class YtpTaskExecute(CkanCommand):
 
     usage = ""
     summary = "Execute all tasks now"
-    group_name = "ytp-tasks"
+    group_name = "ytp_tasks"
 
     def command(self):
         self._load_config()
@@ -61,7 +61,7 @@ class YtpTaskExecute(CkanCommand):
 
         if self.verbose:
             print u"Executing all scheduled tasks now"
-        task = celery.send_task("ckanext.ytp.tasks.execute_all", task_id=str(uuid.uuid4()))
+        task = celery.send_task("ckanext.ytp_tasks.execute_all", task_id=str(uuid.uuid4()))
         if self.verbose:
             print u"Task '%s' set to queue" % unicode(task)
 
@@ -73,10 +73,10 @@ class YtpTaskInitDatabase(CkanCommand):
 
     usage = ""
     summary = "Init task database"
-    group_name = "ytp-tasks"
+    group_name = "ytp_tasks"
 
     def command(self):
         self._load_config()
 
-        from ckanext.ytp.tasks.model import YtpTaskTables
+        from ckanext.ytp_tasks.model import YtpTaskTables
         YtpTaskTables.create_tables()

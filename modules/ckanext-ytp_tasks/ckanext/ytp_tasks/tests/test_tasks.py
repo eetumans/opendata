@@ -2,8 +2,8 @@ import paste.fixture
 import pylons.test
 from ckan import model
 from ckan.tests import TestCase
-from ckanext.ytp.tasks.tasks import execute_all
-from ckanext.ytp.tasks.model import YtpTaskTables
+from ckanext.ytp_tasks.tasks import execute_all
+from ckanext.ytp_tasks.model import YtpTaskTables
 
 
 class TestTasks(TestCase):
