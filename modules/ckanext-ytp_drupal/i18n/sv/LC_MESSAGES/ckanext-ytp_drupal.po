@@ -21,30 +21,30 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ckanext/ytp/drupal/controller.py:30
+#: ckanext/ytp_drupal/controller.py:30
 msgid "Unauthorized to delete user"
 msgstr "Inte tillräckliga rättigheter för att radera användaren"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:3
-#: ckanext/ytp/drupal/templates/user/delete_me.html:8
-#: ckanext/ytp/drupal/templates/user/delete_me.html:14
+#: ckanext/ytp_drupal/templates/user/delete_me.html:3
+#: ckanext/ytp_drupal/templates/user/delete_me.html:8
+#: ckanext/ytp_drupal/templates/user/delete_me.html:14
 msgid "Delete account"
 msgstr "Radera användarkontot"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:6
+#: ckanext/ytp_drupal/templates/user/delete_me.html:6
 msgid "Users"
 msgstr "Användare"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:16
+#: ckanext/ytp_drupal/templates/user/delete_me.html:16
 msgid ""
 "By deleting your account, you can't login again. Your data will not be "
 "removed, so if you want to delete your data, please do it manually."
 msgstr "Efter att du raderat ditt användarkonto kan du inte logga in längre. Datat som du skapat raderas inte, så ifall du vill radera datat måste du göra det manuellt."
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:21
+#: ckanext/ytp_drupal/templates/user/delete_me.html:21
 msgid "Are you sure you want delete your account?"
 msgstr "Är du säker på att du vill radera ditt användarkonto?"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:23
+#: ckanext/ytp_drupal/templates/user/delete_me.html:23
 msgid "Yes. Delete my account."
 msgstr "Ja. Radera mitt användarkonto."

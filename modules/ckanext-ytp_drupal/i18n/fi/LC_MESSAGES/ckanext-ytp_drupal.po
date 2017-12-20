@@ -21,30 +21,30 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ckanext/ytp/drupal/controller.py:30
+#: ckanext/ytp_drupal/controller.py:30
 msgid "Unauthorized to delete user"
 msgstr "Ei riittäviä oikeuksia käyttäjän poistamiseen"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:3
-#: ckanext/ytp/drupal/templates/user/delete_me.html:8
-#: ckanext/ytp/drupal/templates/user/delete_me.html:14
+#: ckanext/ytp_drupal/templates/user/delete_me.html:3
+#: ckanext/ytp_drupal/templates/user/delete_me.html:8
+#: ckanext/ytp_drupal/templates/user/delete_me.html:14
 msgid "Delete account"
 msgstr "Poista käyttäjätili"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:6
+#: ckanext/ytp_drupal/templates/user/delete_me.html:6
 msgid "Users"
 msgstr ""
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:16
+#: ckanext/ytp_drupal/templates/user/delete_me.html:16
 msgid ""
 "By deleting your account, you can't login again. Your data will not be "
 "removed, so if you want to delete your data, please do it manually."
 msgstr "Käyttäjätilin poistamisen jälkeen et voi kirjautua enää sisään. Luomiasi tietoja ei poisteta, joten jos haluat poistaa tiedot, tee se manuaalisesti."
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:21
+#: ckanext/ytp_drupal/templates/user/delete_me.html:21
 msgid "Are you sure you want delete your account?"
 msgstr "Oletko varma, että haluat poistaa käyttäjätilisi?"
 
-#: ckanext/ytp/drupal/templates/user/delete_me.html:23
+#: ckanext/ytp_drupal/templates/user/delete_me.html:23
 msgid "Yes. Delete my account."
 msgstr "Kyllä. Poista käyttäjätilini."

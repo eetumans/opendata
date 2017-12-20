@@ -37,7 +37,7 @@ class YtpDrupalPlugin(plugins.SingletonPlugin):
 
     def before_map(self, m):
         """ Override delete page """
-        controller = 'ckanext.ytp.drupal.controller:YtpDrupalController'
+        controller = 'ckanext.ytp_drupal.controller:YtpDrupalController'
         m.connect('user_delete_me', '/user/delete-me', action='delete_me', controller=controller)
         return m
 

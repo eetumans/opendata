@@ -35,7 +35,7 @@ def _create_context():
     return context
 
 
-@celery_app.celery.task(name="ckanext.ytp.drupal.delete_user")
+@celery_app.celery.task(name="ckanext.ytp_drupal.delete_user")
 def delete_user(user_id):
     """ Execute all tasks from database """
     _load_config()

@@ -24,7 +24,7 @@ class YtpDrupalController(UserController):
             context = {'model': model, 'session': model.Session, 'user': c.user}
             toolkit.check_access('user_delete_me', context, {})
 
-            celery.send_task("ckanext.ytp.drupal.delete_user", args=(c.userobj.id,), task_id=str(uuid.uuid4()))
+            celery.send_task("ckanext.ytp_drupal.delete_user", args=(c.userobj.id,), task_id=str(uuid.uuid4()))
             redirect(get_plugin('ytp_drupal').cancel_url)
         except NotAuthorized:
             msg = _('Unauthorized to delete user')
