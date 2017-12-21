@@ -22,7 +22,7 @@ from ckan.lib.munge import munge_title_to_name
 from ckan.lib.navl import dictization_functions
 from ckan.lib.navl.dictization_functions import Missing, StopOnError, missing, flatten_dict, unflatten, Invalid
 from ckan.lib.plugins import DefaultOrganizationForm, DefaultTranslation
-from ckan.logic import NotFound, NotAuthorized, auth, get_action, NotFound
+from ckan.logic import NotFound, NotAuthorized, auth as ckan_auth, get_action, NotFound
 from ckan.model import Session
 from ckan.plugins import toolkit
 from ckanext.harvest.model import HarvestObject
@@ -274,7 +274,7 @@ class YTPDatasetForm(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_resource('public/javascript/', 'ytp_dataset_js')
         toolkit.add_template_directory(config, 'templates')
 
-        toolkit.add_resource('../common/public/javascript/', 'ytp_common_js')
+        toolkit.add_resource('public/javascript/', 'ytp_common_js')
         toolkit.add_template_directory(config, '../common/templates')
 
     # IDatasetForm #
@@ -1166,7 +1166,7 @@ class YTPServiceForm(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         toolkit.add_resource('public/javascript/', 'ytp_service_js')
         toolkit.add_template_directory(config, 'templates')
 
-        toolkit.add_resource('../common/public/javascript/', 'ytp_common_js')
+        toolkit.add_resource('public/javascript/', 'ytp_common_js')
         toolkit.add_template_directory(config, '../common/templates')
 
     # IDatasetForm #
@@ -1287,7 +1287,7 @@ class YTPServiceForm(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         if result:
             return result
 
-        package = auth.get_package_object(context, data_dict)
+        package = ckan_auth.get_package_object(context, data_dict)
         harvest_object_count = model.Session.query(HarvestObject) \
             .filter(HarvestObject.package_id == package.id) \
             .filter(HarvestObject.current == True) \
@@ -1587,7 +1587,7 @@ class YtpUserPlugin(plugins.SingletonPlugin):
 
     def update_config(self, config):
         toolkit.add_template_directory(config, 'templates')
-        toolkit.add_resource('../common/public/javascript/', 'ytp_common_js')
+        toolkit.add_resource('public/javascript/', 'ytp_common_js')
         toolkit.add_public_directory(config, 'public')
 
     def configure(self, config):
