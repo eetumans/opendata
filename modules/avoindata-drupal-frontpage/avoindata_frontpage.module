@@ -1,0 +1,16 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function avoindata_frontpage_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.avoindata_frontpage':
+      return t('
+        Creates and initializes front page content. Some of the content may 
+        later be edited by site admin.
+      ');
+  }
+}

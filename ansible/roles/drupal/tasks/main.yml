@@ -220,6 +220,7 @@
     chdir: "{{ drupal8_root }}/web"
   with_items:
     - "avoindata_header"
+    - "avoindata_frontpage"
 
 ### Theme ###
 
