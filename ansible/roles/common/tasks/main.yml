@@ -140,6 +140,7 @@
     - build-essential
     - nodejs
     - libcurl4-openssl-dev
+    - postgresql-client
   tags:
   - packages
   - common

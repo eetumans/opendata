@@ -36,7 +36,7 @@ all_paths:
   - "{{ log_path }}"
   - "{{ static_path }}"
 
-hostname: 10.10.10.10
+#hostname: 10.10.10.10
 hostname_language: fi
 secondary_hostname: 127.0.0.1
 secondary_hostname_language: en
@@ -120,7 +120,9 @@ postgres:
       password: "{{ secret.database_drupal_password }}"
 
   server:
-    installed_locally: "{{ postgres_conf.installed_locally }}"
+    #installed_locally: "{{ postgres_conf.installed_locally }}"
+    installed_locally: true
+    local_multi_machine: "{{ postgres_conf.local_multi_machine }}"
     host: "{{ postgres_conf.host }}"
     port: 5432
     admin_user: "{{ postgres_conf.admin_user }}"
@@ -141,8 +143,9 @@ drupal:
   hash_salt: "{{ secret.drupal_hash_salt }}"
 
 postgres_conf:
-  installed_locally: true
-  host: 127.0.0.1
+  local_multi_machine: true
+  installed_locally: false
+  host: 10.10.10.20
   admin_user: postgres
   admin_password:
 

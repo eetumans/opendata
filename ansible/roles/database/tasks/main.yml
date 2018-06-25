@@ -5,7 +5,7 @@
     name: python-psycopg2
 
 - include: local.yml
-  when: postgres.server.installed_locally
+  when: postgres.server.installed_locally or postgres.server.local_multi_machine
 
 - include: rds.yml
   when: not postgres.server.installed_locally

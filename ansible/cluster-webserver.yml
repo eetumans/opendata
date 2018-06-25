@@ -1,10 +1,15 @@
 ---
 
 - hosts: webserver
-  sudo: true
+  become: true
+  vars:
+    database_host: "10.10.10.20"
+    solr_host: "10.10.10.20"
+    database_ip_range: "10.0.0.0/8"
+    hostname: "10.10.10.10"
   vars_files:
     - "vars/common.yml"
-    - ["vars/ytp-secrets/{{ secret_variables }}", "vars/none.yml"]
+    - ["{{ secrets_file_path }}", "vars/none.yml"]
     - ["vars/local.yml", "vars/none.yml"]
   roles:
     - common
