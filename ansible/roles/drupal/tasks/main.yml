@@ -276,6 +276,13 @@
     - fontawesome_menu_icons
     - smtp
 
+- name: Enable Drupal modules only for vagrant environment
+  command: "{{ drupal8_root }}/vendor/drush/drush/drush en -y {{ item }}"
+  when: "{{ vagrant }} == true"
+  with_items:
+    - devel # Enables some development tools
+    - devel_generate # Enables generating dummy content
+    
 - name: Configure SMTP module settings
   command: ../vendor/drush/drush/drush config:set smtp.settings {{ item.key }} {{ item.value }}
   args:
@@ -296,7 +303,13 @@
     - { key: name, value: "{{ email_domain }}"}
     - { key: mail, value: "{{ email_from }}"}
 
-### User roles
+### Generate dummy content
+
+- name: Generate dummy content in vagrant environment
+  command: "{{ drupal8_root }}/vendor/drush/drush/drush  devel-generate-content 10 --types=avoindata_event,avoindata_article --languages=fi,en,sv"
+  when: "{{ vagrant }} == true"
+
+  ### User roles
 
 # Item argument is used two times, because the other one sets a machine readable name and the other one a human readable name
 - name: Create user roles
