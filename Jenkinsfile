@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Notify Github about pending job') {
             steps {
-                notifyGithub("pending")
+                notifyGithub("pending", "The build has started..")
             }
         }
         stage('Run ansible') {
@@ -30,10 +30,10 @@ pipeline {
                 def build_status = currentBuild.result
                 def status
                 if ( build_status == 'SUCCESS' ){
-                  notifyGithub('success')
+                  notifyGithub('success', 'The build succeeded!' )
                 }
                 else {
-                  notifyGithub('failure')
+                  notifyGithub('failure', 'The build failed :(')
                 }
               }
             }
@@ -42,12 +42,13 @@ pipeline {
 }
 
 
-def notifyGithub(state){
+def notifyGithub(state, description){
   def githubURL = "https://api.github.com/repos/vrk-kpa/opendata/statuses/$GIT_COMMIT?access_token=$GITHUB_TOKEN"
   def payload = JsonOutput.toJson([
     state: state,
-    description: "VRK Jenkins",
-    target_url: "https://vrk-jenkins.eden.csc.fi/job/av/job/av-pipeline/job/$BRANCH_NAME/$BUILD_NUMBER/console"
+    description: description,
+    target_url: "https://vrk-jenkins.eden.csc.fi/job/av/job/av-pipeline/job/$BRANCH_NAME/$BUILD_NUMBER/console",
+    context: "continuous-integration/jenkins"
   ])
 
   sh "curl -X POST -H 'Content-Type: application/json' -d \'${payload}\' ${githubURL}"
