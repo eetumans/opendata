@@ -47,7 +47,7 @@ def notifyGithub(state){
   def payload = JsonOutput.toJson([
     state: state,
     description: "VRK Jenkins",
-    target_url: "http://vrk-jenkins.eden.csc.fi/job/av/job/av-pipeline/job/$JOB_NAME/$BUILD_NUMBER/console"
+    target_url: "https://vrk-jenkins.eden.csc.fi/job/av/job/av-pipeline/job/$BRANCH_NAME/$BUILD_NUMBER/console"
   ])
 
   sh "curl -X POST -H 'Content-Type: application/json' -d \'${payload}\' ${githubURL}"
