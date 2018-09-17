@@ -54,5 +54,5 @@ def notifyGithub(state){
     target_url: "http://vrk-jenkins.eden.csc.fi/job/av/job/av-run-ansible/$BUILD_NUMBER/console"
   ])
 
-  sh "curl -X POST -H \'Content-Type: application/json\' --data-urlencode \'payload=${payload}\' ${githubURL}"
+  sh "curl -X POST -H 'Content-Type: application/json' -d \'${payload}\' ${githubURL}"
 }
