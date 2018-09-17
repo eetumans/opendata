@@ -19,23 +19,15 @@ pipeline {
         stage('Run ansible') {
             steps {
                 echo 'Running ansible...'
+                currentBuild.result = 'success'
             }
         }
         stage('Notify Github about finished job') {
             steps {
-              sh '''
-                set +x
-                echo $BUILD_STATUS
 
-                if [ $BUILD_STATUS == 'success' ]
-                then
-                  export STATUS="success"
-                else
-                  export STATUS="failure"
-                fi
-              '''
+              def status = currentBuild.result
 
-              notifyGithub($STATUS)
+              notifyGithub(status)
             }
         }
     }
