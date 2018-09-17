@@ -28,13 +28,13 @@ pipeline {
             steps {
               script {
                 def build_status = currentBuild.result
+                def status
                 if ( build_status == 'SUCCESS' ){
-                  def status = 'success'
+                  notifyGithub('success')
                 }
                 else {
-                  def status = 'failure'
+                  notifyGithub('failure')
                 }
-                notifyGithub(status)
               }
             }
         }
