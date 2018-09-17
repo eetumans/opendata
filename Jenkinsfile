@@ -27,7 +27,13 @@ pipeline {
         stage('Notify Github about finished job') {
             steps {
               script {
-                def status = currentBuild.result
+                def build_status = currentBuild.result
+                if ( build_status == 'SUCCESS' ){
+                  def status = 'success'
+                }
+                else {
+                  def status = 'failure'
+                }
                 notifyGithub(status)
               }
             }
