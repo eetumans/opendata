@@ -19,15 +19,17 @@ pipeline {
         stage('Run ansible') {
             steps {
                 echo 'Running ansible...'
-                currentBuild.result = 'success'
+                script {
+                  currentBuild.result = 'success'
+                }
             }
         }
         stage('Notify Github about finished job') {
             steps {
-
-              def status = currentBuild.result
-
-              notifyGithub(status)
+              script {
+                def status = currentBuild.result
+                notifyGithub(status)
+              }
             }
         }
     }
