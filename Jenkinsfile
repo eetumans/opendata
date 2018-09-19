@@ -2,6 +2,8 @@
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
+def containerName = "${BUILD_TAG}"
+
 pipeline {
     agent {
       label 'av'
@@ -19,8 +21,15 @@ pipeline {
         stage('Run ansible') {
             steps {
                 echo 'Running ansible...'
-                script {
-                  currentBuild.result = 'success'
+                try {
+                  sh "lxc launch ubuntu:16.04 ${containerName}"
+                  sh "lxc exec ${containerName} -- sh -c \"until test -f /var/lib/cloud/instance/boot-finished; do sleep 1; done\""
+                }
+                catch {
+                  currentBuild.result = "FAILURE"
+                }
+                finally {
+                  sh "lxc stop ${containerName}"
                 }
             }
         }
@@ -37,6 +46,10 @@ pipeline {
                 }
               }
             }
+        }
+
+        stage('Cleanup'){
+          sh 'lxc delete ${containerName}'
         }
     }
 }
