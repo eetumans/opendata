@@ -21,15 +21,17 @@ pipeline {
         stage('Run ansible') {
             steps {
                 echo 'Running ansible...'
-                try {
-                  sh "lxc launch ubuntu:16.04 ${containerName}"
-                  sh "lxc exec ${containerName} -- sh -c \"until test -f /var/lib/cloud/instance/boot-finished; do sleep 1; done\""
-                }
-                catch (err){
-                  currentBuild.result = "FAILURE"
-                }
-                finally {
-                  sh "lxc stop ${containerName}"
+                script {
+                  try {
+                    sh "lxc launch ubuntu:16.04 ${containerName}"
+                    sh "lxc exec ${containerName} -- sh -c \"until test -f /var/lib/cloud/instance/boot-finished; do sleep 1; done\""
+                  }
+                  catch (err){
+                    currentBuild.result = "FAILURE"
+                  }
+                  finally {
+                    sh "lxc stop ${containerName}"
+                  }
                 }
             }
         }
@@ -49,7 +51,11 @@ pipeline {
         }
 
         stage('Cleanup'){
-          sh 'lxc delete ${containerName}'
+          steps {
+            script {
+              sh 'lxc delete ${containerName}'
+            }
+          }
         }
     }
 }
