@@ -34,8 +34,8 @@ who.log_file = %(cache_dir)s/who_log.ini
 
 sqlalchemy.url = postgres://{{ postgres.users.ckan.username }}:{{ postgres.users.ckan.password }}@{{ postgres.server.host }}/{{ postgres.databases.ckan.name }}
 
-ckan.site_url = https://{{ hostname }}
-ckan.site_url_internally = https://{{ hostname }}/data/
+ckan.site_url = https://{{ fqdn }}
+ckan.site_url_internally = https://{{ fqdn }}/data/
 {% raw %}
 ckan.root_path = /data/{{LANG}}
 {% endraw %}
@@ -115,8 +115,8 @@ ckan.harvest.mq.redis_db = {{ redis_harvest_database }}
 
 ckanext-archiver.archive_dir = {{ resource_cache_path }}
 ckanext-archiver.max_content_length = 50000000
-ckanext-archiver.cache_url_root = https://{{ hostname }}/resource_cache/
-ckanext-archiver.user_agent_string = {{ hostname }} archiver
+ckanext-archiver.cache_url_root = https://{{ fqdn }}/resource_cache/
+ckanext-archiver.user_agent_string = {{ fqdn }} archiver
 ckanext-archiver.archive_cloud = True
 
 ckanext.sixodp_showcasesubmit.creating_user_username = {{ admin.username }}
@@ -131,7 +131,7 @@ disqus.notify.email_field = maintainer_email
 
 ckanext-datarequests.datarequest_notifications_admin_email = None
 
-ckanext.drupal8.domain = {{ hostname }},{{ secondary_hostname }}
+ckanext.drupal8.domain = {{ fqdn }},{{ secondary_fqdn }}
 ckanext.drupal8.sysadmin_role = {{ drupal_ckan_admin_rolename }}
 ckanext.drupal8.connection = postgres://{{ postgres.users.drupal8.username }}:{{ postgres.users.drupal8.password }}@{{ postgres.server.host }}/{{ postgres.databases.drupal8.name }}
 ckanext.drupal8.allow_edit = true

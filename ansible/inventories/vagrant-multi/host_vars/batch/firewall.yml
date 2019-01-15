@@ -1,0 +1,11 @@
+firewall_rules:
+  - rule: "allow"
+    proto: "tcp"
+    src: "any"
+    to_port: 22
+    comment: "ssh"
+  - rule: "allow"
+    proto: "tcp"
+    src: "any"
+    to_port: 8983
+    comment: "Solr"

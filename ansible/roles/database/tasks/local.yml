@@ -25,7 +25,7 @@
   - database
 
 - name: Generate self-signed SSL certificate
-  command: openssl req -new -nodes -x509 -subj "/C=FI/ST=Helsinki/L=Helsinki/O=IT/CN={{ hostname }}" -days 3650 -keyout "/var/lib/postgresql/9.5/main/server.key" -out "/var/lib/postgresql/9.5/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/9.5/main/server.crt"
+  command: openssl req -new -nodes -x509 -subj "/C=FI/ST=Helsinki/L=Helsinki/O=IT/CN={{ fqdn }}" -days 3650 -keyout "/var/lib/postgresql/9.5/main/server.key" -out "/var/lib/postgresql/9.5/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/9.5/main/server.crt"
   tags:
     - database
 

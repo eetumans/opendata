@@ -1,0 +1,16 @@
+drupal_smtp_protocol: standard
+drupal_smtp_port: 1025
+
+drupal_editor_rolename: editor
+drupal_publisher_rolename: publisher
+drupal_ckan_admin_rolename: ckan_admin
+
+drupal_roles:
+  - { 'username': "{{ admin.username }}", 'role': "{{ drupal_ckan_admin_rolename }}" }
+  - { 'username': "test-editor", 'role': "{{ drupal_editor_rolename }}" }
+  - { 'username': "test-editor", 'role': "{{ drupal_ckan_admin_rolename }}" }
+  - { 'username': "test-publisher", 'role': "{{ drupal_publisher_rolename }}" }
+
+
+drupal:
+  hash_salt: "{{ secret.drupal_hash_salt }}"

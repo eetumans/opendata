@@ -1,0 +1,9 @@
+[web-servers]
+web1  ansible_ssh_host=10.10.10.10 ansible_ssh_private_key_file="{{ playbook_dir }}/../.vagrant/machines/{{ inventory_hostname }}/virtualbox/private_key" ansible_ssh_user=vagrant
+
+[batch-servers]
+batch  ansible_ssh_host=10.10.10.20 ansible_ssh_private_key_file="{{ playbook_dir }}/../.vagrant/machines/{{ inventory_hostname }}/virtualbox/private_key" ansible_ssh_user=vagrant
+
+[vagrant:children]
+web-servers
+batch-servers

@@ -739,13 +739,13 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * example.org, with all subdomains included.
  */
  $settings['trusted_host_patterns'] = array(
-   '^{{ hostname | regex_escape() }}$',
-   {% if base_hostname is defined and base_hostname|length -%}
-   '^{{ base_hostname | regex_escape() }}$',
+   '^{{ fqdn | regex_escape() }}$',
+   {% if domain is defined and domain|length -%}
+   '^{{ domain | regex_escape() }}$',
    {% endif -%}
-   '^{{ secondary_hostname | regex_escape() }}$',
-   {% if secondary_base_hostname is defined and secondary_base_hostname|length -%}
-   '^{{ secondary_base_hostname | regex_escape() }}$'
+   '^{{ secondary_fqdn | regex_escape() }}$',
+   {% if secondary_domain is defined and secondary_domain|length -%}
+   '^{{ secondary_domain | regex_escape() }}$'
    {% endif -%}
  );
 

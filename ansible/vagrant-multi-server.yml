@@ -1,0 +1,34 @@
+---
+
+- name: Configure batch server play
+  hosts: batch-servers
+  become: true
+  vars_files:
+  roles:
+    - { role: common, tags: common_role }
+    - { role: firewall, tags: firewall_role }
+    - { role: jetty, tags: jetty_role }
+
+- name: Configure web server(s) play
+  hosts: web-servers
+  become: true
+  roles:
+    - {role: common, tags: common_role}
+    - {role: firewall, tags: firewall_role}
+    - {role: mailhog, tags: mailhog_role}
+    - {role: database, tags: database_role}
+    - {role: common_webserver, tags: common_webserver_role}
+    - {role: ssl, tags: ssl_role}
+    - {role: nginx, tags: nginx_role}
+    - {role: postfix, tags: postfix_role}
+    - {role: redis, tags: redis_role}
+    - {role: ckan-extensions, tags: ckan-extensions_role}
+    - {role: ckan, tags: ckan_role}
+    - {role: ckan-config, tags: ckan_config_role}
+    - {role: ckan-database, tags: ckan-database_role}
+    - {role: ckan-data, tags: ckan-data_role}
+    - {role: ckan-restart, tags: ckan-restart_role}
+    - {role: drupal, tags: drupal_role}
+    - {role: clamav, tags: clamav_role}
+    - {role: data, tags: data_role}
+    - {role: datapusher, tags: datapusher_role}

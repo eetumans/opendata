@@ -38,12 +38,12 @@ all_paths:
   - "{{ log_path }}"
   - "{{ static_path }}"
 
-hostname: 10.10.10.10
-hostname_language: fi
-secondary_hostname: 127.0.0.1
-secondary_hostname_language: en
-base_hostname: ""
-secondary_base_hostname: ""
+fqdn: 10.10.10.10
+fqdn_language: fi
+secondary_fqdn: 127.0.0.1
+secondary_fqdn_language: en
+domain: ""
+secondary_domain: ""
 
 drupal_editor_rolename: editor
 drupal_publisher_rolename: publisher
@@ -85,7 +85,7 @@ harvest_sources: false
 ckan_version: "2.8.2"
 ckan_branch: "ckan-{{ ckan_version }}"
 
-email_domain: "{{ hostname }}"
+email_domain: "{{ fqdn }}"
 email_from: "no-reply@{{ email_domain }}"
 error_email_from: "error@{{ email_domain }}"
 
@@ -183,4 +183,3 @@ AWS:
   smtp_server_domain: "email-smtp.eu-west-1.amazonaws.com"
 
 debug_enabled: false
-

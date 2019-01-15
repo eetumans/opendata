@@ -1,0 +1,20 @@
+solr_host: "10.10.10.20"
+
+ckan_smtp_use_tls: False
+ckan_smtp_port: 1025
+
+ckan_admins:
+  - "{{ admin.username }}"
+  - "{{ harvest_user.username }}"
+  - "test-editor"
+
+ckan_ini: /etc/ckan/default/production.ini
+virtual_environment: /usr/lib/ckan/default
+datapusherenv: /usr/lib/ckan/datapusher
+ckan_who_ini: /etc/ckan/default/who.ini
+
+
+harvest_sources: false
+
+ckan_version: "2.8.2"
+ckan_branch: "ckan-{{ ckan_version }}"

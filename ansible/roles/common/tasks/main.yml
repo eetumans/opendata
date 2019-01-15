@@ -11,9 +11,13 @@
 
 - include: timezone.yml
 
+- name: Set fact for hostname
+  set_fact:
+    hostname: "{{ deployment_environment_id }}-{{ ansible_ssh_host | replace('.','-') }}"
+
 - name: Set hostname
   hostname:
-    name: "{{ deployment_environment_id }}-web"
+    name: "{{ hostname }}"
   register: hostname_update
   tags:
   - common
@@ -22,7 +26,7 @@
   lineinfile:
     path: /etc/hosts
     regexp: '^127\.0\.0\.1'
-    line: "127.0.0.1\tlocalhost {{ deployment_environment_id }}-web"
+    line: "127.0.0.1\tlocalhost {{ hostname }}"
     owner: root
     group: root
     mode: 0644
