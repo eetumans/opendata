@@ -44,3 +44,7 @@ ckan_admins:
   - "test-editor"
 
 ckan_show_postit_demo: true
+
+ckan_smtp_server_domain: email-smtp.eu-west-1.amazonaws.com
+ckan_smtp_username: "{{ secret_smtp_user }}"
+ckan_smtp_password: "{{ secret_smtp_password }}"
